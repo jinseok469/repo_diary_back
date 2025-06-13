@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.diary.module.diary.DiaryDao">
+	<resultMap type="com.diary.module.diary.DiaryDto"
+	id="resultMapObj">
+	</resultMap>
+	
+	
+	<select id="selectDiary" resultMap="resultMapObj">
+		select 
+		a.id,
+		a.createdDate,
+		a.emotionId,
+		a.content
+		from
+		diary as a
+		where 1=1
+		and a.user_id = #{id}
+		and a.delNy = 0
+	</select>
+	
+	<insert id="insertDiary" useGeneratedKeys="true" keyProperty="id">
+		insert into diary
+		(
+		createdDate,
+		emotionId,
+		content,
+		user_id
+		)values
+		(
+		#{createdDate},
+		#{emotionId},
+		#{content},
+		#{user_id}
+		)
+	</insert>
+	<update id="updateDiary">
+		update diary
+		set
+		createdDate = #{createdDate},
+		emotionId = #{emotionId},
+		content = #{content}
+		where 1=1 
+		and id = #{id}
+	</update>
+	<update id="ueleteDiary">
+		update diary
+		set
+		delNy = #{delNy}
+		where 1=1
+		and id = #{id}
+	</update>
+	<delete id="deleteDiary">
+		delete from diary
+		where 1=1 and
+		id = #{id}
+	</delete>
+</mapper>
