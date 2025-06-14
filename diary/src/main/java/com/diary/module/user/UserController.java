@@ -14,7 +14,6 @@ import com.diary.module.util.BaseVo;
 import jakarta.annotation.PostConstruct;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
 public class UserController {
 	
 	@Autowired

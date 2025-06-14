@@ -35,14 +35,18 @@ public class OpenAiDiaryService {
 	            .collect(Collectors.joining("\n"));
 
 	        String prompt = """
-	            아래는 사용자가 1달간 쓴 감정일기 목록입니다. 전체 내용을 분석해서:
-	            1. 전체적인 감정 경향 요약
-	            2. 주요 감정 통계 (예: 행복 10일, 슬픔 5일 등)
-	            3. 따뜻한 위로 메시지 한 줄
+	        		아래는 사용자가 1달간 쓴 감정일기 목록입니다. 전체 내용을 분석해서 다음 형식으로 줄바꿈(\n)을 포함해 응답해주세요:
+	        		각 항목은 번호별로 줄을 바꿔 출력해 주세요.
+	        		1. 전체적인 감정 경향 요약 (최소 50자)
+	        		2. 주요 감정 통계 (예: 행복 10일, 슬픔 5일 등)
+	        		3. 따뜻한 위로 메시지 한 줄  (최소 50자)
 
-	            일기 목록:
-	            %s
-	            """.formatted(diaryList);
+	        		
+
+	        		일기 목록:
+	        		%s
+	        		""".formatted(diaryList);
+
 
 	        Map<String, Object> requestBody = Map.of(
 	            "model", "gpt-3.5-turbo",

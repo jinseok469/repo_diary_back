@@ -7,7 +7,6 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -20,7 +19,6 @@ import com.diary.module.openai.OpenAiDiaryService;
 import reactor.core.publisher.Mono;
 
 @RestController
-@CrossOrigin(origins ="http://localhost:5173")
 public class DiaryController {
 	
 	@Autowired
@@ -125,7 +123,7 @@ public class DiaryController {
 	    
 	}
 	
-	@PostMapping("api/ai")
+	@PostMapping("/api/ai")
     public Mono<String> analyzeDiary(@RequestBody List<DiaryDto> diary) {
 		List<String> diaries = new ArrayList<String>();
 		for(int i = 0 ; i < diary.size(); i++) {
