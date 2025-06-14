@@ -27,5 +27,7 @@ public class DiaryService {
 	public int ueleteDiary(DiaryDto dto) {
 		return diaryDao.ueleteDiary(dto);
 	}
+	
+
 
 }
